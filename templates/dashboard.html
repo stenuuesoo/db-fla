@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overwatch</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    
+    <style>
+    body {
+        margin-top: 10px;
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* Light text */
+        font-family: "Graphic Medium"
+    }
+
+    .card {
+        background-color: #1e1e1e; /* Dark card background */
+        color: #ffffff; /* Light text for card */
+    }
+
+    .card-title {
+        color: #ffffff; /* Light text for card title */
+    }
+
+    /* Customizing Chart.js tooltip and legend */
+    .chartjs-tooltip {
+        background-color: #424242 !important;
+        color: white !important;
+    }
+
+    .chartjs-legend {
+        color: white !important;
+    }
+
+    /* Additional styling */
+    .card-content {
+        text-align: center;
+        font-size: 40px; /* Large font size for the single digit */
+    }
+
+    .center-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0px;
+       
+
+    
+    .row {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .col {
+        padding: 0;
+    }
+
+    .card {
+        margin-right: 2px; /* Adjust this value as needed */
+        margin-left: 2px; /* Adjust this value as needed */
+        margin-top: 2px; /* Adjust this value as needed */
+        margin-bottom: 2px; /* Adjust this value as needed */
+        
+    }
+    .custom-center-row {
+        padding-top: 3px;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        width: 100%; /* Ensure it takes the full width */
+        max-height: 400px;
+        display: flex;
+    }
+    .container {
+        margin-top: 5px;
+    }
+
+    #trendChart {
+        width: 100% !important;
+        height: auto !important; /* Adjust height to maintain aspect ratio */
+        max-height: 400px; /* Maximum height */
+        margin: 0 auto; /* Center the canvas */
+        display: block; /* Ensures the canvas is a block-level element */
+    }
+</style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row center-row">
+            <!-- Card 1 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Balance</span>
+                        <p>4,565</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">CFD's</span>
+                        <p>120</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Digital Assets</span>
+                        <p>3</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Auto Farmers</span>
+                        <p>1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row center-row">
+            <!-- Card 1 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Partnerships</span>
+                        <p>5</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Projects</span>
+                        <p>29</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Obligations</span>
+                        <p>12,000</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Total Assets</span>
+                        <p>550,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-center-row">
+            <canvas id="trendChart"></canvas>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    var ctx = document.getElementById('trendChart').getContext('2d');
+var trendChart = new Chart(ctx, {
+    type: 'line', // Type of chart: line chart
+    data: {
+        labels: ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023'],
+        datasets: [{
+            label: 'Savings',
+            data: [500, 1200, 2000, 2600, 3200, 2500, 3100, 3400, 3100, 3900, 4565], // Example data
+            backgroundColor: 'rgba(255, 255, 255, 0.1)', // Semi-transparent white for the line fill
+            borderColor: 'white', // White line color
+            borderWidth: 1,
+            pointBackgroundColor: 'white', // White points
+            pointBorderColor: 'darkgrey', // Dark grey border for points
+            pointBorderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'darkgrey' // White y-axis labels
+                },
+                grid: {
+                    color: '' // Dark grey grid lines
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'darkgrey' // White x-axis labels
+                },
+                grid: {
+                    color: '' // Dark grey grid lines
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'darkgrey' // White legend labels
+                }
+            }
+        }
+    }
+});
+
+
+</script>
+
+</body>
+</html>
